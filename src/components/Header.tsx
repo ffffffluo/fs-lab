@@ -3,7 +3,7 @@ function Header() {
     <header>
       <div className="header-content">
         <img
-          src="../src/assets/logo.png"
+          src="../assets/logo.png"
           alt="Pixell River Logo"
           className="logo"
         />
