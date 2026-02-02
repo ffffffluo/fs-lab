@@ -31,20 +31,36 @@ function EmployeeForm({ departments, onAdd }: FormProps) {
   };
 
   return (
-    <section style={{ marginTop: "40px", borderTop: "2px solid #ccc" }}>
-      <h3>Add New Employee</h3>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label>First Name: </label>
-          <input value={first} onChange={(e) => setFirst(e.target.value)} />
+    <section className="mt-10">
+      <h3 className="text-xl font-bold mb-4 border-b-2 border-zinc-300 pb-1">
+        Add New Employee
+      </h3>
+      <form className="space-y-4" onSubmit={handleSubmit}>
+        <div className="flex items-center gap-4">
+          <label className="w-32">First Name:</label>
+          <input
+            className="border px-2 py-1"
+            value={first}
+            onChange={(e) => setFirst(e.target.value)}
+          />
         </div>
-        <div>
-          <label>Last Name: </label>
-          <input value={last} onChange={(e) => setLast(e.target.value)} />
+
+        <div className="flex items-center gap-4">
+          <label className="w-32">Last Name:</label>
+          <input
+            className="border px-2 py-1"
+            value={last}
+            onChange={(e) => setLast(e.target.value)}
+          />
         </div>
-        <div>
-          <label>Department: </label>
-          <select value={dept} onChange={(e) => setDept(e.target.value)}>
+
+        <div className="flex items-center gap-4">
+          <label className="w-32">Department:</label>
+          <select
+            className="border px-2 py-1"
+            value={dept}
+            onChange={(e) => setDept(e.target.value)}
+          >
             {departments.map((d) => (
               <option key={d} value={d}>
                 {d}
@@ -52,8 +68,15 @@ function EmployeeForm({ departments, onAdd }: FormProps) {
             ))}
           </select>
         </div>
-        {error && <p style={{ color: "red" }}>{error}</p>}
-        <button type="submit">Add Employee</button>
+
+        {error && <p className="text-red-500">{error}</p>}
+
+        <button
+          className="rounded bg-zinc-200 px-3 py-1 font-semibold transition hover:bg-blue-100 hover:text-blue-700"
+          type="submit"
+        >
+          Add Employee
+        </button>
       </form>
     </section>
   );

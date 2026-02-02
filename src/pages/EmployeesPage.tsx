@@ -31,7 +31,7 @@ export default function HomePage() {
         ))}
       </div>
 
-      <div className="mt-12 pt-8 border-gray-200">
+      <div className="border-gray-200">
         <EmployeeForm
           departments={data.map((d) => d.name)}
           onAdd={addEmployee}
