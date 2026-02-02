@@ -1,9 +1,7 @@
-function Footer() {
+export default function Footer() {
   return (
-    <footer>
+    <footer className="bg-gray-800 text-white text-center p-4">
       <p>Copyright Pixell River Financial 2026.</p>
     </footer>
   );
 }
-
-export default Footer;

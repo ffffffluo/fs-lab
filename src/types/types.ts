@@ -4,3 +4,9 @@ export interface Role {
   lastName: string;
   role: string;
 }
+
+export interface Employee {
+  id: number;
+  name: string;
+  department: string;
+}
