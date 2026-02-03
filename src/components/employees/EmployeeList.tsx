@@ -1,4 +1,4 @@
-import type { Employee } from "../data/organizationData";
+import type { Employee } from "../../data/organizationData";
 
 interface EmployeeListProps {
   employees: Employee[];

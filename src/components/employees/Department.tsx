@@ -1,4 +1,4 @@
-import type { Department as DeptType } from "../data/organizationData";
+import type { Department as DeptType } from "../../data/organizationData";
 import EmployeeList from "./EmployeeList";
 
 interface DepartmentProps {
@@ -8,7 +8,9 @@ interface DepartmentProps {
 function Department({ department }: DepartmentProps) {
   return (
     <section>
-      <h2>{department.name}</h2>
+      <h2 className="text-lg font-bold border-b-2 border-zinc-300 pb-1">
+        {department.name}
+      </h2>
       <EmployeeList employees={department.employees} />
     </section>
   );
