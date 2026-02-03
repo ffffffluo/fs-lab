@@ -1,6 +1,11 @@
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import {
+  createBrowserRouter,
+  RouterProvider,
+  Navigate,
+} from "react-router-dom";
 import Layout from "./components/layout/Layout";
-import HomePage from "./pages/EmployeesPage";
+import EmployeesPage from "./pages/EmployeesPage";
+import OrganizationPage from "./pages/OrganizationPage";
 
 const router = createBrowserRouter([
   {
@@ -9,7 +14,15 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <HomePage />,
+        element: <Navigate to="/employees" replace />,
+      },
+      {
+        path: "employees",
+        element: <EmployeesPage />,
+      },
+      {
+        path: "organization",
+        element: <OrganizationPage />,
       },
     ],
   },

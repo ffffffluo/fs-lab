@@ -1,22 +1,37 @@
 import logo from "../../assets/logo.png";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 export default function Nav() {
+  // Helper for active link styling
+  const linkClass = ({ isActive }: { isActive: boolean }) =>
+    isActive
+      ? "text-blue-800 font-bold border-b-2 border-blue-800"
+      : "text-gray-600 hover:text-blue-600 font-medium";
+
   return (
-    <nav className="bg-gray-100 border-b-2 border-gray-200 p-4">
-      <div className="flex items-center container mx-auto">
-        <Link to="/">
-          <img src={logo} alt="Pixell River Logo" className="h-20 w-auto" />
+    <nav className="bg-white border-b border-gray-200 shadow-sm sticky top-0 z-10">
+      <div className="container mx-auto px-4 py-3 flex items-center justify-between">
+        <Link to="/employees" className="flex-shrink-0">
+          <img src={logo} alt="Pixell River Logo" className="h-16 w-auto" />
         </Link>
-        <div className="flex-1 text-center">
-          <h1 className="text-2xl font-bold text-blue-900">
-            Pixell River Employee Directory
+
+        <div className="hidden md:block text-center flex-1 px-4">
+          <h1 className="text-xl font-bold text-blue-900">
+            Pixell River Financial
           </h1>
-          <p className="text-gray-600">
-            Manage and view our organizational structure.
+          <p className="text-xs text-gray-500 uppercase tracking-wide">
+            Employee Directory
           </p>
         </div>
-        <div className="w-20"></div>
+
+        <div className="flex gap-6">
+          <NavLink to="/employees" className={linkClass}>
+            Employees
+          </NavLink>
+          <NavLink to="/organization" className={linkClass}>
+            Organization
+          </NavLink>
+        </div>
       </div>
     </nav>
   );
