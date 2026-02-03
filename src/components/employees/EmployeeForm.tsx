@@ -15,12 +15,12 @@ function EmployeeForm({ departments, onAdd }: FormProps) {
     e.preventDefault();
     setError("");
 
-    if (first.length <= 0) {
+    if (!first) {
       setError("First Name cannot be empty");
       return;
     }
 
-    if (last.length <= 0) {
+    if (!last) {
       setError("Last Name cannot be empty");
       return;
     }
@@ -32,52 +32,55 @@ function EmployeeForm({ departments, onAdd }: FormProps) {
 
   return (
     <section className="mt-10">
-      <h3 className="text-xl font-bold mb-4 border-b-2 border-zinc-300 pb-1">
+      <h3 className="text-xl font-bold text-blue-900 mb-4 border-b-2 border-blue-900 pb-2">
         Add New Employee
       </h3>
-      <form className="space-y-4" onSubmit={handleSubmit}>
-        <div className="flex items-center gap-4">
-          <label className="w-32">First Name:</label>
-          <input
-            className="border px-2 py-1"
-            value={first}
-            onChange={(e) => setFirst(e.target.value)}
-          />
-        </div>
 
-        <div className="flex items-center gap-4">
-          <label className="w-32">Last Name:</label>
-          <input
-            className="border px-2 py-1"
-            value={last}
-            onChange={(e) => setLast(e.target.value)}
-          />
-        </div>
+      <div className="bg-white shadow rounded-lg overflow-hidden">
+        <form className="p-6 space-y-4" onSubmit={handleSubmit}>
+          <div className="flex items-center gap-4">
+            <label className="w-32 font-medium text-gray-800">First Name</label>
+            <input
+              className="w-full max-w-md border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-200"
+              value={first}
+              onChange={(e) => setFirst(e.target.value)}
+            />
+          </div>
 
-        <div className="flex items-center gap-4">
-          <label className="w-32">Department:</label>
-          <select
-            className="border px-2 py-1"
-            value={dept}
-            onChange={(e) => setDept(e.target.value)}
+          <div className="flex items-center gap-4">
+            <label className="w-32 font-medium text-gray-800">Last Name</label>
+            <input
+              className="w-full max-w-md border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-200"
+              value={last}
+              onChange={(e) => setLast(e.target.value)}
+            />
+          </div>
+
+          <div className="flex items-center gap-4">
+            <label className="w-32 font-medium text-gray-800">Department</label>
+            <select
+              className="w-full max-w-md border border-gray-300 rounded px-3 py-2 bg-white focus:outline-none focus:ring-2 focus:ring-blue-200"
+              value={dept}
+              onChange={(e) => setDept(e.target.value)}
+            >
+              {departments.map((d) => (
+                <option key={d} value={d}>
+                  {d}
+                </option>
+              ))}
+            </select>
+          </div>
+
+          {error && <p className="text-red-500 font-medium">{error}</p>}
+
+          <button
+            className="rounded bg-zinc-200 px-4 py-2 font-semibold transition hover:bg-blue-100 hover:text-blue-700"
+            type="submit"
           >
-            {departments.map((d) => (
-              <option key={d} value={d}>
-                {d}
-              </option>
-            ))}
-          </select>
-        </div>
-
-        {error && <p className="text-red-500">{error}</p>}
-
-        <button
-          className="rounded bg-zinc-200 px-3 py-1 font-semibold transition hover:bg-blue-100 hover:text-blue-700"
-          type="submit"
-        >
-          Add Employee
-        </button>
-      </form>
+            Add Employee
+          </button>
+        </form>
+      </div>
     </section>
   );
 }
