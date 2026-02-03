@@ -5,13 +5,12 @@ import HomePage from "./pages/EmployeesPage";
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Layout />, // Wraps everything in Nav/Footer
+    element: <Layout />,
     children: [
       {
-        index: true, // This is the default page for "/"
+        index: true,
         element: <HomePage />,
       },
-      // Future pages (e.g. /about) would go here
     ],
   },
 ]);
