@@ -5,15 +5,25 @@ interface EmployeeListProps {
 }
 
 function EmployeeList({ employees }: EmployeeListProps) {
-  if (!employees) return null;
+  if (!employees || employees.length === 0) {
+    return <div className="p-4 text-gray-600">No employees added yet.</div>;
+  }
+
   return (
-    <ul>
+    <div>
       {employees.map((emp, index) => (
-        <li key={index}>
-          {emp.firstName} {emp.lastName}
-        </li>
+        <div
+          key={index}
+          className={`flex justify-between items-center p-4 
+            ${index !== employees.length - 1 ? "border-b border-gray-200" : ""} 
+            hover:bg-gray-50`}
+        >
+          <span className="text-lg font-semibold text-gray-800">
+            {emp.firstName} {emp.lastName}
+          </span>
+        </div>
       ))}
-    </ul>
+    </div>
   );
 }
 

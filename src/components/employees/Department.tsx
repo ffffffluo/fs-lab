@@ -8,10 +8,13 @@ interface DepartmentProps {
 function Department({ department }: DepartmentProps) {
   return (
     <section>
-      <h2 className="text-lg font-bold border-b-2 border-zinc-300 pb-1">
+      <h3 className="text-xl font-bold text-blue-900 mb-4 border-b-2 border-blue-900 pb-2">
         {department.name}
-      </h2>
-      <EmployeeList employees={department.employees} />
+      </h3>
+
+      <div className="bg-white shadow rounded-lg overflow-hidden">
+        <EmployeeList employees={department.employees} />
+      </div>
     </section>
   );
 }
