@@ -1,26 +1,13 @@
 import { useState } from "react";
 import Department from "../components/employees/Department";
 import EmployeeForm from "../components/employees/EmployeeForm";
-import { organizationData as initialData } from "../data/organizationData";
+import { employeeService } from "../services/employeeService";
 
-export default function HomePage() {
-  const [data, setData] = useState(initialData);
+export default function EmployeesPage() {
+  const [data, setData] = useState(employeeService.getDepartments());
 
-  const addEmployee = (
-    firstName: string,
-    lastName: string,
-    deptName: string,
-  ) => {
-    const updatedData = data.map((dept) => {
-      if (dept.name === deptName) {
-        return {
-          ...dept,
-          employees: [...dept.employees, { firstName, lastName }],
-        };
-      }
-      return dept;
-    });
-    setData(updatedData);
+  const handleAddSuccess = () => {
+    setData(employeeService.getDepartments());
   };
 
   return (
@@ -35,7 +22,10 @@ export default function HomePage() {
         ))}
       </div>
 
-      <EmployeeForm departments={data.map((d) => d.name)} onAdd={addEmployee} />
+      <EmployeeForm
+        departments={data.map((d) => d.name)}
+        onAddSuccess={handleAddSuccess}
+      />
     </main>
   );
 }
