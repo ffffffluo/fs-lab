@@ -1,4 +1,4 @@
-import type { Department as DeptType } from "../../../server/src/data/organizationData";
+import type { Department as DeptType } from "../../../apps/server/src/data/organizationData";
 import EmployeeList from "./EmployeeList";
 
 interface DepartmentProps {
