@@ -1,13 +1,25 @@
-import { useState } from "react";
-import Department from "../components/employees/Department";
+import { useState, useEffect } from "react";
+import DepartmentComponent from "../components/employees/Department";
 import EmployeeForm from "../components/employees/EmployeeForm";
 import { employeeService } from "../services/employeeService";
+import type { Department } from "../types/types";
 
 export default function EmployeesPage() {
-  const [data, setData] = useState(employeeService.getDepartments());
+  const [data, setData] = useState<Department[]>([]);
+
+  // Create a helper to load data from the network
+  const loadData = async () => {
+    const freshData = await employeeService.getDepartments();
+    setData(freshData);
+  };
+
+  // Run once when the component mounts
+  useEffect(() => {
+    loadData();
+  }, []);
 
   const handleAddSuccess = () => {
-    setData(employeeService.getDepartments());
+    loadData(); // Re-fetch from the server when a new employee is added
   };
 
   return (
@@ -18,7 +30,7 @@ export default function EmployeesPage() {
 
       <div className="space-y-8">
         {data.map((dept, index) => (
-          <Department key={index} department={dept} />
+          <DepartmentComponent key={index} department={dept} />
         ))}
       </div>
 

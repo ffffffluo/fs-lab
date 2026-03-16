@@ -1,15 +1,15 @@
-import { leadershipData } from "../data/leadershipData";
-import type { Officer } from "../types/types";
+// import { leadershipData } from "../../server/src/data/leadershipData";
+// import type { Officer } from "../types/types";
 
-let tempLeadershipData: Officer[] = [...leadershipData];
+// let tempLeadershipData: Officer[] = [...leadershipData];
 
-export const leadershipRepo = {
-  getOfficers: (): Officer[] => {
-    return tempLeadershipData;
-  },
+// export const leadershipRepo = {
+//   getOfficers: (): Officer[] => {
+//     return tempLeadershipData;
+//   },
 
-  createOfficer: (firstName: string, lastName: string, role: string) => {
-    tempLeadershipData = [...tempLeadershipData, { firstName, lastName, role }];
-    return tempLeadershipData;
-  },
-};
+//   createOfficer: (firstName: string, lastName: string, role: string) => {
+//     tempLeadershipData = [...tempLeadershipData, { firstName, lastName, role }];
+//     return tempLeadershipData;
+//   },
+// };

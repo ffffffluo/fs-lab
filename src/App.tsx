@@ -5,7 +5,7 @@ import {
 } from "react-router-dom";
 import Layout from "./components/layout/Layout";
 import EmployeesPage from "./pages/EmployeesPage";
-import OrganizationPage from "./pages/OrganizationPage";
+// import OrganizationPage from "./pages/OrganizationPage";
 
 const router = createBrowserRouter([
   {
@@ -20,10 +20,10 @@ const router = createBrowserRouter([
         path: "employees",
         element: <EmployeesPage />,
       },
-      {
-        path: "organization",
-        element: <OrganizationPage />,
-      },
+      // {
+      //   path: "organization",
+      //   element: <OrganizationPage />,
+      // },
     ],
   },
 ]);
