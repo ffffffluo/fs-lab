@@ -1,4 +1,4 @@
-import type { Officer } from "../types/types";
+import type { Officer } from "../../../../src/types/types";
 
 export const leadershipData: Officer[] = [
   { firstName: "Jo-Anne", lastName: "Sinclair", role: "CEO & Chair of Board" },

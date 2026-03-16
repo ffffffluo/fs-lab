@@ -1,23 +1,29 @@
-import { organizationData, type Department } from "../data/organizationData";
+import type { Department } from "../types/types";
 
-// Store data temporarily
-let tempOrgData: Department[] = [...organizationData];
+const API_URL = "http://localhost:3000/api/employees";
 
 export const employeeRepo = {
-  getDepartments: (): Department[] => {
-    return tempOrgData;
+  // These are now async because they have to wait for the network
+  getDepartments: async (): Promise<Department[]> => {
+    const response = await fetch(API_URL);
+    return response.json();
   },
 
-  createEmployee: (firstName: string, lastName: string, deptName: string) => {
-    tempOrgData = tempOrgData.map((dept) => {
-      if (dept.name === deptName) {
-        return {
-          ...dept,
-          employees: [...dept.employees, { firstName, lastName }],
-        };
-      }
-      return dept;
+  createEmployee: async (
+    firstName: string,
+    lastName: string,
+    deptName: string,
+  ) => {
+    const response = await fetch(API_URL, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ firstName, lastName, deptName }),
     });
-    return tempOrgData;
+
+    if (!response.ok) {
+      const errorData = await response.json();
+      return { success: false, error: errorData.error };
+    }
+    return { success: true };
   },
 };
